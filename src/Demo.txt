@@ -1,0 +1,47 @@
+public class Demo {
+    public static void main(String[] args) {
+        // Criar equipas
+        Vehicleinator.Equipa equipa1 = new Vehicleinator.Equipa("Racing Stars", "F1");
+        Vehicleinator.Equipa equipa2 = new Vehicleinator.Equipa("Vehicleinator.Moto Masters", "MotoGP");
+
+        // Criar veículos e associá-los às equipas
+        Vehicleinator.Formula1Car f1Car = new Vehicleinator.Formula1Car("F1", "Ferrari SF23", 1600, 2023, 80.0, 90.0, 1000, 800, 2000.5, 3);
+        Vehicleinator.Moto moto = new Vehicleinator.Moto("MotoGP", "Yamaha YZR-M1", 1000, 2023, 85.0, 95.0, 240, 160, false, "Desportiva");
+
+        equipa1.adicionarVeiculo(f1Car);
+        equipa2.adicionarVeiculo(moto);
+
+        // Criar membros e associá-los às equipas
+        Vehicleinator.Piloto piloto1 = new Vehicleinator.Piloto("Lewis Hamilton", 38, 20, "FIA", "F1");
+        Vehicleinator.Piloto piloto2 = new Vehicleinator.Piloto("Marc Márquez", 30, 12, "FIM", "MotoGP");
+        Vehicleinator.Engenheiro engenheiro1 = new Vehicleinator.Engenheiro("Alice Johnson", 35, 10, "Aerodinâmica");
+        Vehicleinator.Mecanico mecanico1 = new Vehicleinator.Mecanico("Bob Williams", 40, 15, "Motores");
+
+        equipa1.adicionarMembro(piloto1);
+        equipa1.adicionarMembro(engenheiro1);
+        equipa2.adicionarMembro(piloto2);
+        equipa2.adicionarMembro(mecanico1);
+
+        // Criar uma competição e adicionar equipas
+        Vehicleinator.Competicao competicao = new Vehicleinator.Competicao("Grande Prêmio do Brasil", "Interlagos", "15/12/2024");
+        competicao.adicionarEquipa(equipa1);
+        competicao.adicionarEquipa(equipa2);
+
+        // Exibir detalhes da competição
+        System.out.println("\n--- Detalhes da Competição ---");
+        competicao.exibirDetalhes();
+
+        // Organizar corrida e exibir o vencedor
+        System.out.println("\n--- Corrida ---");
+        String vencedora = competicao.organizarCorrida();
+
+        // Registrar o resultado para as equipas
+        equipa1.registrarResultado(equipa1.getNomeEquipa().equals(vencedora) ? "Vitória" : "Derrota");
+        equipa2.registrarResultado(equipa2.getNomeEquipa().equals(vencedora) ? "Vitória" : "Derrota");
+
+        // Exibir detalhes das equipas após a corrida
+        System.out.println("\n--- Detalhes das Equipas ---");
+        equipa1.exibirDetalhes();
+        equipa2.exibirDetalhes();
+    }
+}
